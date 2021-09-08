@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Bson" Version="2.13.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="FileService">
+      <HintPath>J:\Project\24drsFramework\24drs Framework\FileService\bin\Debug\netstandard2.0\FileService.dll</HintPath>
+    </Reference>
+    <Reference Include="LogService">
+      <HintPath>J:\Project\24drsFramework\24drs Framework\FileService\bin\Debug\netstandard2.0\LogService.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
