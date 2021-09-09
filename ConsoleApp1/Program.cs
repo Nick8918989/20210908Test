@@ -69,7 +69,7 @@ namespace ConsoleApp1
             //資料庫連線
             string CONNECTION_STRING = "Server=192.168.5.162;Database=HOME_CARE_TEST;User ID=sa;Pwd=24drs;MultipleActiveResultSets=True;Max Pool Size=256;";
             //Ser放檔案的資料夾
-            string BASE_PATH = "\\\\192.168.5.162\\Temp\\HomeCareFile";
+            string BASE_PATH = "C:\\Users\\Admin\\Desktop\\date";
             //建立Log實例
             var logHelp = LogHelper.GetInstance(LogProvider.SQL, CONNECTION_STRING);
             //建立檔案實例

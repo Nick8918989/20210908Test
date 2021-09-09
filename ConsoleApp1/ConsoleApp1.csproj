@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" />
     <PackageReference Include="MongoDB.Bson" Version="2.13.1" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
@@ -17,6 +18,10 @@
     <Reference Include="LogService">
       <HintPath>J:\Project\24drsFramework\24drs Framework\FileService\bin\Debug\netstandard2.0\LogService.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Libraries\" />
   </ItemGroup>
 
 </Project>
