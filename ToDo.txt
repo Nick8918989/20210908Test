@@ -13,6 +13,7 @@ PDF 加入服務
           服務參考引用本機端網址
           並點選移至(非常重要)
           net.tcp://localhost:60004/PDFWebService
+          記得重新命名為自己要的名稱
 
 Email 加入服務
 
