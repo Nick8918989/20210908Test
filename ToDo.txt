@@ -1,3 +1,8 @@
+Log 遷入檔案
+File  遷入檔案
+PDF 加入服務
+Email 加入服務
+
 1.遷入檔案加入兩個Log 與 File DLL
 2.Nuget加入兩個參考
     (1)MongoDB
