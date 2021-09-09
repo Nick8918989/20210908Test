@@ -34,7 +34,6 @@ C:\Users\Admin\Desktop\date\ConsoleApp1\bin\Debug\netcoreapp3.1\runtimes\win-x64
 C:\Users\Admin\Desktop\date\ConsoleApp1\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\Admin\Desktop\date\ConsoleApp1\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Admin\Desktop\date\ConsoleApp1\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\Admin\Desktop\date\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.csprojAssemblyReference.cache
 C:\Users\Admin\Desktop\date\ConsoleApp1\bin\Debug\netcoreapp3.1\MongoDB.Bson.dll
 C:\Users\Admin\Desktop\date\ConsoleApp1\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\Admin\Desktop\date\ConsoleApp1\bin\Debug\netcoreapp3.1\JetBrains.Annotations.dll
