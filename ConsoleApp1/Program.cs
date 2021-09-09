@@ -16,24 +16,29 @@ namespace ConsoleApp1
 {
     class Program
     {
+        private static string cnStr = "Server=192.168.5.162;Database=Test;User ID=sa;Pwd=24drs;MultipleActiveResultSets=True;Max Pool Size=256;";
+
         static void Main(string[] args)
         {
             Console.WriteLine("Start ...");
-            
-            //資料庫連線
-            string cnStr = "Server=192.168.5.162;Database=Test;User ID=sa;Pwd=24drs;MultipleActiveResultSets=True;Max Pool Size=256;";
 
-            //測試-Dapper連線資料庫實作
-            //QueryUser(cnStr);
+            //測試-Dapper查詢實作
+            //QueryUser();
+
+            //測試-Dapper非同步查詢實作
+            //AsyncQueryUser();
+
+            //測試-Dapper開啟交易實作
+            //BeginTransactionTest();
 
             //測試-Dapper新增資料
-            //InsertUser(cnStr);
+            //InsertUser();
 
             //測試-Dapper更新資料
-            //UpdateUser(cnStr);
+            //UpdateUser();
 
             //測試-Dapper刪除資料
-            //DeleteUser(cnStr);
+            //DeleteUser();
 
             //測試-檔案上傳功能
             //SetFile(cnStr).Wait();
@@ -75,9 +80,9 @@ namespace ConsoleApp1
             }
         }
 
-        public static void QueryUser(string _cnStr)
+        public static void QueryUser()
         {
-            using (var cn = new SqlConnection(_cnStr))
+            using (var cn = new SqlConnection(cnStr))
             {
                 var userList = cn.Query("SELECT * FROM MVC_DEMO_USER");
                 foreach (var user in userList)
@@ -87,9 +92,9 @@ namespace ConsoleApp1
             }
         }
 
-        public static void InsertUser(string _cnStr)
+        public static void InsertUser()
         {
-            using (var cn = new SqlConnection(_cnStr))
+            using (var cn = new SqlConnection(cnStr))
             {
                 string strSql =
                     "INSERT INTO MVC_DEMO_USER(GROUP_ID, NAME, MAIL, PASSWORD, USERNAME) VALUES (@GROUP_ID,@NAME,@MAIL,@PASSWORD,@USERNAME);";
@@ -102,9 +107,9 @@ namespace ConsoleApp1
             }
         }
 
-        public static void UpdateUser(string _cnStr)
+        public static void UpdateUser()
         {
-            using (var cn = new SqlConnection(_cnStr))
+            using (var cn = new SqlConnection(cnStr))
             {
                 string strSql =
                     "UPDATE  MVC_DEMO_USER SET NAME = @NAME WHERE ID = @ID;";
@@ -117,16 +122,63 @@ namespace ConsoleApp1
             }
         }
 
-        public static void DeleteUser(string _cnStr)
+        public static void DeleteUser()
         {
-            using (var cn = new SqlConnection(_cnStr))
+            using (var cn = new SqlConnection(cnStr))
             {
                 string strSql = "DELETE  MVC_DEMO_USER WHERE MAIL LIKE @MAILSTRING";
-                dynamic[] updateData = new[] {
+                dynamic[] deleteData = new[] {
                     new { MAILSTRING = "%" + "test" + "%" },
                 };
-                cn.Execute(strSql, updateData);
+                cn.Execute(strSql, deleteData);
                 Console.WriteLine("資料刪除成功");
+            }
+        }
+
+        public static void AsyncQueryUser()
+        {
+            using (var cn = new SqlConnection(cnStr))
+            {
+                var userList = cn.QueryAsync("SELECT * FROM MVC_DEMO_USER").Result;
+                foreach (var user in userList)
+                {
+                    Console.WriteLine("資料是...{0}", user.ID);
+                }
+                Console.WriteLine("非同步抓取資料成功");
+            }
+        }
+
+        public static void BeginTransactionTest()
+        {
+            using (var cn = new SqlConnection(cnStr))
+            {
+                string strSql = "DELETE  MVC_DEMO_USER WHERE NAME LIKE @NAMESTRING";
+                dynamic[] deleteData = new[] {
+                    new { NAMESTRING = "%" + "rr" + "%" },
+                };
+                cn.Open();
+                using (var tran = cn.BeginTransaction())
+                {
+                    try
+                    {
+                        //如有開交易一定要放最後面的參數，否則會錯誤
+                        //錯誤訊息用InvalidOperationException去接即可
+
+                        //正確版
+                        cn.Execute(strSql, deleteData, transaction: tran);
+
+                        //錯誤版
+                        //cn.Execute(strSql, deleteData);
+                        tran.Commit();
+                        Console.WriteLine("資料刪除成功");
+                    }
+                    catch(InvalidOperationException e)
+                    {
+                        var errorMsg = e.Message;
+                        tran.Rollback();
+                        throw;
+                    }
+                }
             }
         }
     }
