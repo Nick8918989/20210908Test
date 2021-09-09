@@ -30,7 +30,10 @@ namespace ConsoleApp1
             //InsertUser(cnStr);
 
             //測試-Dapper更新資料
-            UpdateUser(cnStr);
+            //UpdateUser(cnStr);
+
+            //測試-Dapper刪除資料
+            //DeleteUser(cnStr);
 
             //測試-檔案上傳功能
             //SetFile(cnStr).Wait();
@@ -111,6 +114,19 @@ namespace ConsoleApp1
                 };
                 cn.Execute(strSql, updateData);
                 Console.WriteLine("資料更新成功");
+            }
+        }
+
+        public static void DeleteUser(string _cnStr)
+        {
+            using (var cn = new SqlConnection(_cnStr))
+            {
+                string strSql = "DELETE  MVC_DEMO_USER WHERE MAIL LIKE @MAILSTRING";
+                dynamic[] updateData = new[] {
+                    new { MAILSTRING = "%" + "test" + "%" },
+                };
+                cn.Execute(strSql, updateData);
+                Console.WriteLine("資料刪除成功");
             }
         }
     }
