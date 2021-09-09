@@ -15,53 +15,9 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            List<DateTime> dateTimeList = new List<DateTime>();
-            DateTime _startDate = DateTime.Now;
-            DateTime _endDate = new DateTime(2099, 5, 31);
-
-            SetFile().Wait();
-            //while (_startDate.AddDays(10) <= _endDate)
-            //{
-            //    _startDate = _startDate.AddDays(10);
-            //    dateTimeList.Add(_startDate);
-            //}
-            //if (dateTimeList != null && dateTimeList.Count > 0)
-            //{
-            //    foreach (DateTime d in dateTimeList)
-            //    {
-            //        Console.WriteLine(d);
-            //    }
-            //}
-
-            //DateTime thisMonthDate = new DateTime();
-            //DateTime? _oneceEveryYearsDate = new DateTime(2022, 2, 1);
-            ////二月專用的日
-            //int setFebruaryDay = 35;
-            //if(_oneceEveryYearsDate.HasValue)
-            //{
-            //    if (_oneceEveryYearsDate.Value.Date.Month == 2)
-            //    {
-            //        thisMonthDate = GetDateTime(_oneceEveryYearsDate.Value, setFebruaryDay);
-            //        dateTimeList.Add(thisMonthDate);
-            //        while (thisMonthDate.AddMonths(12) <= _endDate)
-            //        {
-            //            thisMonthDate = thisMonthDate.AddMonths(12);
-            //            _startDate = GetDateTime(thisMonthDate, setFebruaryDay);
-            //            dateTimeList.Add(_startDate);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        thisMonthDate = GetDateTime(_oneceEveryYearsDate.Value, _oneceEveryYearsDate.Value.Day);
-            //        dateTimeList.Add(thisMonthDate);
-            //        while (thisMonthDate.AddMonths(12) <= _endDate)
-            //        {
-            //            thisMonthDate = thisMonthDate.AddMonths(12);
-            //            _startDate = GetDateTime(thisMonthDate, _oneceEveryYearsDate.Value.Day);
-            //            dateTimeList.Add(_startDate);
-            //        }
-            //    }
-            //}
+            Console.WriteLine("Start ...");
+            Console.ReadLine();
+            //SetFile().Wait();
         }
 
         public static async Task SetFile()
@@ -98,54 +54,6 @@ namespace ConsoleApp1
                     Console.WriteLine("檔案上傳完成...");
                 }
             }
-        }
-
-        public static DateTime GetDateTime(DateTime _dateTime, int _dayReapet)
-        {
-            DateTime returnDateTime = new DateTime();
-            //只有30天的月份
-            List<int> thirtyMoths = new List<int>() { 4, 6, 9, 11 };
-
-            if (_dateTime.Month != 2)
-            {
-                if (_dayReapet == 31)
-                {
-                    if (thirtyMoths.Contains(_dateTime.Month))
-                    {
-                        returnDateTime = new DateTime(_dateTime.Year, _dateTime.Month, 30);
-                    }
-                    else
-                    {
-                        returnDateTime = new DateTime(_dateTime.Year, _dateTime.Month, 31);
-                    }
-                }
-                else
-                {
-                    returnDateTime = new DateTime(_dateTime.Year, _dateTime.Month, _dayReapet);
-                }
-            }
-            else if (_dateTime.Month == 2)
-            {
-                if (_dayReapet > 28)
-                {
-                    int year = _dateTime.Year;
-                    if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))
-                    {
-                        //是閏年只有29天
-                        returnDateTime = new DateTime(_dateTime.Year, _dateTime.Month, 29);
-                    }
-                    else
-                    {
-                        //不是閏年只有28天
-                        returnDateTime = new DateTime(_dateTime.Year, _dateTime.Month, 28);
-                    }
-                }
-                else
-                {
-                    returnDateTime = new DateTime(_dateTime.Year, _dateTime.Month, _dayReapet);
-                }
-            }
-            return returnDateTime;
         }
     }
 }
