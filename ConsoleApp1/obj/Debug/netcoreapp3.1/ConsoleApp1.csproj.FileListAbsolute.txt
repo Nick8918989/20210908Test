@@ -47,3 +47,5 @@ C:\Users\Admin\Desktop\date\ConsoleApp1\bin\Debug\netcoreapp3.1\System.ServiceMo
 C:\Users\Admin\Desktop\date\ConsoleApp1\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Net.Http.WinHttpHandler.dll
 C:\Users\Admin\Desktop\date\ConsoleApp1\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard2.0\System.Private.ServiceModel.dll
 C:\Users\Admin\Desktop\date\ConsoleApp1\bin\Debug\netcoreapp3.1\runtimes\win7\lib\netstandard2.0\System.Private.ServiceModel.dll
+C:\Users\Admin\Desktop\date\ConsoleApp1\bin\Debug\netcoreapp3.1\Dapper.dll
+C:\Users\Admin\Desktop\date\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.csprojAssemblyReference.cache
