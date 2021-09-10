@@ -94,6 +94,9 @@ namespace ConsoleApp1
 
         public static void InsertUser()
         {
+            //dapper insert dynamic array 所要寫入的每筆Array 的資料
+            //都要一致，不能有第一筆第一欄位是string 第二筆第一欄位是int 的類型，都要是string 才可以
+            //後面 @的欄位設定都要跟資料庫的欄位一樣才能寫入
             using (var cn = new SqlConnection(cnStr))
             {
                 string strSql =
